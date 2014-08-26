@@ -1,0 +1,16 @@
+<%= nav_bar :fixed => :top, :responsive => true do %>
+    <%= menu_group do %>
+        <%= menu_item "Home", "#" %>
+        <%= menu_divider %>
+        <%= drop_down "Products" do %>
+            <%= menu_item "Things you can't afford",  "#" %>
+            <%= menu_item "Things that won't suit you anyway",  "#" %>
+            <%= menu_item "Things you're not even cool enough to buy anyway",  "#" %>
+            <% #if current_user.lives_in_hackney? %>
+                <%= menu_item "Bikes",  "#" %>
+            <% #end %>
+        <% end %>
+        <%= menu_item "About Us",  "#" %>
+        <%= menu_item "Contact",  "#" %>
+    <% end %>
+<% end %>
