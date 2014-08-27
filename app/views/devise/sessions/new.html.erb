@@ -2,11 +2,8 @@
 <div style="margin-top:50px">
 	<div class="row-fluid">
 
-		<div class="col-md-2" style="color:white" >
-		</div>
 
-
-		<div class="col-md-5" style="color:white" >
+		<div class="col-md-5 col-md-offset-2" style="color:white" >
 
 			<h1>Welcome to Represent Egypt.</h1>
 			</br>
@@ -16,7 +13,7 @@
 		</div>
 
 
-		<div class="col-md-3 ">
+		<div class="col-md-3 col-md-offset-1">
 			<div style="color:grey; margin-top:30px;  border: 1px #e4e4e4 solid;  padding: 20px; border-radius: 4px; box-shadow: 0 0 6px #ccc; background-color: #fff;">
 
 				<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -64,7 +61,7 @@
 			Your first time here?
 
 			
-			 <button type="button" style="width:85%"class="btn btn-small btn-sign-up btn-block">Sign up</button> 
+			 <%= button_to "Sign up", new_user_registration_path ,:class => "btn btn-small btn-sign-up btn-block", :method => "get" %>
 			</div>
 
 			<style type="text/css">
