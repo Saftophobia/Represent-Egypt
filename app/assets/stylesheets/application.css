@@ -30,7 +30,6 @@
       html,
     body {
     margin:0;
-    padding:0;
     height:100%;
     background: url('tahrir.jpg') no-repeat center center fixed; 
   	-webkit-background-size: cover;
@@ -39,19 +38,18 @@
   	background-size: cover;
     }
 
+    #padder{
+      padding-top: 60px;
+    }
+
     #wrapper {
     min-height:100%;
     position:relative;
     }
     #header {
     padding:10px;
-    background:#5ee;
     }
-    #content {
-    padding:10px;
-    padding-bottom:80px; /* Height of the footer element */
-    color: white;
-    }
+    
     #footer {
     width:100%;
     height:5%;
