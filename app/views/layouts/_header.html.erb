@@ -1,32 +1,17 @@
 <%= nav_bar :fixed => :top, :responsive => true do %>
     <%= menu_group :pull => :right do %>
         <% if user_signed_in? %>
-        	<%= menu_item "Home", authenticated_root_path %>
+        	<%= menu_item "Logged in as "+ current_user.email, authenticated_root_path %>
         	
 
         	<%= drop_down "" do %>
-            <%= menu_item "Sign out", "#" %>    
+            <%= menu_item "Sign out", destroy_user_session_path, :method => :delete %>    
         	<% end %>
-        
-        	
-
-
         <% end %>
     <% end %>
-
-    
     <%= menu_group :pull => :left do %>
         <% if user_signed_in? %>
         	<%= menu_item "Home", authenticated_root_path %>
-        	
-
-        	<%= drop_down "" do %>
-            <%= menu_item "Sign out", "#" %>    
-        	<% end %>
-        
-        	
-
-
         <% end %>
     <% end %>
     
