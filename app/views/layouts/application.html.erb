@@ -9,8 +9,12 @@
     <body>
 	    <div id="wrapper">
 		    <%= render 'layouts/header' %>
-		    <div id="container-fluid"> <div id="padder"><%= yield %> </div></div>
-		    <div class="footer navbar-fixed-bottom" style="color:white;"><%= render 'layouts/footer' %>	</div>
+		    <div id="container-fluid" style="padding-top:60px">
+		    		<%= yield %> 
+		    </div>
+		    <div class="footer navbar-fixed-bottom" style="color:white;">
+		    	<%= render 'layouts/footer' %>	
+		    </div>
 	    </div>
     </body>
 </html>
