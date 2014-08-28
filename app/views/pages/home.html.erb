@@ -5,13 +5,84 @@
   <div id="multi_markers" style='width: 800px; height: 400px;'></div>
 </div>
 <script type="text/javascript">
-var handler = Gmaps.build('Google');
-handler.buildMap({
-    provider: {
-      disableDefaultUI: true
-      // pass in other Google Maps API options here
-    },
-    internal: {
+  var zoomControl = true;
+  var mapStyles = [
+         {
+            featureType: "road",
+            elementType: "geometry",
+            stylers: [
+              { hue: "#8800ff" },
+              { lightness: 100 }
+            ]
+          },{
+            featureType: "road",
+            stylers: [
+              { visibility: "on" },
+              { hue: "#91ff00" },
+              { saturation: -62 },
+              { gamma: 1.98 },
+              { lightness: 45 }
+            ]
+          },{
+            featureType: "water",
+            stylers: [
+              { hue: "#005eff" },
+              { gamma: 0.72 },
+              { lightness: 42 }
+            ]
+          },{
+            featureType: "transit.line",
+            stylers: [
+              { visibility: "off" }
+            ]
+          },{
+            featureType: "administrative.locality",
+            stylers: [
+              { visibility: "on" }
+            ]
+          },{
+            featureType: "administrative.neighborhood",
+            elementType: "geometry",
+            stylers: [
+              { visibility: "simplified" }
+            ]
+          },{
+            featureType: "landscape",
+            stylers: [
+              { visibility: "on" },
+              { gamma: 0.41 },
+              { lightness: 46 }
+            ]
+          },{
+            featureType: "administrative.neighborhood",
+            elementType: "labels.text",
+            stylers: [
+              { visibility: "on" },
+              { saturation: 33 },
+              { lightness: 20 }
+            ]
+          }
+        ];
+  var mapOptions = {
+    zoom: 11,
+    //minZoom: 10,
+    center: new google.maps.LatLng(41.056466,-85.3312009),
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    streetViewControl: false,
+    mapTypeControl: false,
+    panControl: false,
+    zoomControl: zoomControl,
+    styles: mapStyles,
+    zoomControlOptions: {
+    style: google.maps.ZoomControlStyle.SMALL,
+    position: google.maps.ControlPosition.LEFT_CENTER
+    }
+  }
+
+  var handler = Gmaps.build('Google');
+  handler.buildMap({
+    provider: mapOptions,
+       internal: {
       id: 'multi_markers'
     }
   },
@@ -25,7 +96,7 @@ handler.buildMap({
           "width":  36,
           "height": 36
         },
-        "infowindow": "hello!"
+        "infowindow": "<b> hello! <b> "
       },
       {
         "lat": 45,
@@ -40,22 +111,9 @@ handler.buildMap({
     ]);
   handler.bounds.extendWith(markers);
   handler.fitMapToBounds();
-});
+  });
     
 </script>
 
-//set map options
-var mapOptions = {
-zoom: 11,
-//minZoom: 10,
-center: new google.maps.LatLng(41.056466,-85.3312009),
-mapTypeId: google.maps.MapTypeId.ROADMAP,
-streetViewControl: false,
-mapTypeControl: false,
-panControl: false,
-zoomControl: zoomControl,
-styles: mapStyles,
-zoomControlOptions: {
-style: google.maps.ZoomControlStyle.SMALL,
-position: google.maps.ControlPosition.LEFT_CENTER
-}
+
+
