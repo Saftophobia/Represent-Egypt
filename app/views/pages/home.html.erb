@@ -6,16 +6,56 @@
 </div>
 <script type="text/javascript">
 var handler = Gmaps.build('Google');
-handler.buildMap({ internal: {id: 'multi_markers'}}, function(){
-  var markers = handler.addMarkers([
-    { lat: 43, lng: 3.5},
-    { lat: 45, lng: 4},
-    { lat: 47, lng: 3.5},
-    { lat: 49, lng: 4},
-    { lat: 51, lng: 3.5}
-  ]);
+handler.buildMap({
+    provider: {
+      disableDefaultUI: true
+      // pass in other Google Maps API options here
+    },
+    internal: {
+      id: 'multi_markers'
+    }
+  },
+  function(){
+    markers = handler.addMarkers([
+      {
+        "lat": 43,
+        "lng": 3.5,
+        "picture": {
+          "url": "assets/icons/startup.png",
+          "width":  36,
+          "height": 36
+        },
+        "infowindow": "hello!"
+      },
+      {
+        "lat": 45,
+        "lng": 3.5,
+        "picture": {
+          "url": "assets/icons/investor.png",
+          "width":  36,
+          "height": 36
+        },
+        "infowindow": "hello!"
+      }
+    ]);
   handler.bounds.extendWith(markers);
   handler.fitMapToBounds();
 });
     
 </script>
+
+//set map options
+var mapOptions = {
+zoom: 11,
+//minZoom: 10,
+center: new google.maps.LatLng(41.056466,-85.3312009),
+mapTypeId: google.maps.MapTypeId.ROADMAP,
+streetViewControl: false,
+mapTypeControl: false,
+panControl: false,
+zoomControl: zoomControl,
+styles: mapStyles,
+zoomControlOptions: {
+style: google.maps.ZoomControlStyle.SMALL,
+position: google.maps.ControlPosition.LEFT_CENTER
+}
