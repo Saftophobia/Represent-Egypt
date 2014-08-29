@@ -21,6 +21,8 @@
               <li><a href="#"><%= image_tag("icons/coworking.png", size: "20x27")%> Coworking <span class="badge">118</span> </a> </li>
               <li><a href="#"><%= image_tag("icons/incubator.png", size: "20x27")%> R&D Centers <span class="badge">118</span> </a> </li>
               <li><a href="#"><%= image_tag("icons/service.png", size: "20x27")%> Services <span class="badge">118</span> </a> </li>
+         <!--     <li> <li><%= button_to "TTTTTTTTT!", new_user_registration_path ,:class => "btn btn-small btn-sign-up btn-block", :method => "get" , :onclick => "makeinvis(this);"%> </li> -->
+              
             </ul>
           </div>
         </div>
@@ -43,6 +45,7 @@
   var clientHeight = $(window).height();
   var clientWidth = $(window).width();
   var zoomControl = true;
+  var markers;
   var mapStyles = [
          {
             featureType: "road",
@@ -128,10 +131,12 @@
       {
         "lat": 43,
         "lng": 3.5,
+        "visible": false,
+        "title": "blahblahblah",
         "picture": {
           "url": "assets/icons/startup.png",
-          "width":  36,
-          "height": 36
+          "width":  31,
+          "height": 42
         },
         "infowindow": "<b> hello! <b> "
       },
@@ -140,18 +145,23 @@
         "lng": 3.5,
         "picture": {
           "url": "assets/icons/investor.png",
-          "width":  36,
-          "height": 36
+          "width":  31,
+          "height": 42  
         },
         "infowindow": "hello!"
       }
     ]);
   handler.bounds.extendWith(markers);
   handler.fitMapToBounds();
+  
+
 
   });
+  function makeinvis(){
+    markers[0].serviceObject.setVisible(false);
 
-      
+  };    
+
 </script>
 <script type="text/javascript">
   // make map fluid
@@ -159,6 +169,8 @@
   $('#multi_markers').css('height', clientHeight);
   $('#multi_markers').css('width', clientWidth);
   }).resize();
+
+
 
 
 </script>
