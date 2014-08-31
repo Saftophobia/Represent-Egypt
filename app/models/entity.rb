@@ -1,10 +1,11 @@
 class Entity < ActiveRecord::Base
 	validates :name, :presence => true, length: { in: 6..20 }
 	validates :type, :presence => true 
-	validates :lat, :presence => true, length: { in: 22..32 } 
-	validates :lon, :presence => true, length: { in: 25..35 }
-	validates :url, :presence => true, length: { in: 6..20 }
-	validates :address, :presence => true
+	validates :lat, :presence => true,:numericality => {:greater_than_or_equal_to => 22, :less_than_or_equal_to => 32} 
+	validates :lon, :presence => true, :numericality => {:greater_than_or_equal_to => 25, :less_than_or_equal_to => 35}
+	validates :address, :presence => true , length: { in: 10..80 }
 	validates :year_estab, :presence => true
+	validates :url, :presence => true, length: { in: 6..55 }, :format => URI::regexp(%w(http https))
+
 	
 end
