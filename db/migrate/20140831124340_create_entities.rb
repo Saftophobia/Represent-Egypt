@@ -9,8 +9,8 @@ class CreateEntities < ActiveRecord::Migration
       t.string :url
       t.string :address
       t.integer :year_estab
-      t.integer :user_id
       t.boolean :admin_verification, default: false
+      t.references :user, index: true
 
       t.timestamps
     end

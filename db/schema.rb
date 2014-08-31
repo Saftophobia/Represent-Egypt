@@ -22,11 +22,13 @@ ActiveRecord::Schema.define(version: 20140831124340) do
     t.string   "url"
     t.string   "address"
     t.integer  "year_estab"
-    t.integer  "user_id"
     t.boolean  "admin_verification",                          default: false
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "entities", ["user_id"], name: "index_entities_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false
