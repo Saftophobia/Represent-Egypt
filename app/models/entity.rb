@@ -1,7 +1,9 @@
 class Entity < ActiveRecord::Base
 	belongs_to :user
 
-	validates :name, :presence => true, length: { in: 6..20 }
+	self.inheritance_column = nil
+
+	validates :name, :presence => true, length: { in: 3..20 }
 	validates :type, :presence => true 
 	validates :lat, :presence => true,:numericality => {:greater_than_or_equal_to => 22, :less_than_or_equal_to => 32} 
 	validates :lon, :presence => true, :numericality => {:greater_than_or_equal_to => 25, :less_than_or_equal_to => 35}

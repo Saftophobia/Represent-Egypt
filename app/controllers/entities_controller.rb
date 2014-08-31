@@ -1,5 +1,6 @@
 class EntitiesController < ApplicationController
   before_action :set_entity, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource except: [:create]
 
   # GET /entities
   # GET /entities.json
@@ -25,7 +26,7 @@ class EntitiesController < ApplicationController
   # POST /entities.json
   def create
     @entity = Entity.new(entity_params)
-
+    @entity.user_id = current_user.id
     respond_to do |format|
       if @entity.save
         format.html { redirect_to @entity, notice: 'Entity was successfully created.' }
@@ -42,6 +43,11 @@ class EntitiesController < ApplicationController
   def update
     respond_to do |format|
       if @entity.update(entity_params)
+        unless current_user.try(:admin)
+          @entity.user_id = current_user.id
+          @entity.save
+        end
+
         format.html { redirect_to @entity, notice: 'Entity was successfully updated.' }
         format.json { render :show, status: :ok, location: @entity }
       else

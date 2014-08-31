@@ -47,7 +47,7 @@
 				    <%= f.check_box :remember_me %> <%= f.label :remember_me , {:style=>'font-weight: normal;'}%> 
 				  <% end -%>
 				  <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-				  <%= link_to "Forgot password?", new_password_path(resource_name), {:style=>'float:right; margin-top: 1.1%'} %>
+				  <%= link_to "Forgot password?", new_password_path(resource_name), {:style=>'color:grey ;float:right; margin-top: 1.1%'} %>
 				  
 				<% end -%>
 
