@@ -1,12 +1,13 @@
 <%= nav_bar :fixed => :top, :responsive => true do %>
     <%= menu_group :pull => :right do %>
         <% if user_signed_in? %>
-       
-
         	<%= drop_down "Logged in as "+ current_user.email do %>
             <%= menu_item "Profile", "#" %>   
             <%= menu_item "Sign out", destroy_user_session_path, :method => :delete %>    
         	<% end %>
+        <% end %>
+        <% if current_user.try(:admin)%>
+            <%= menu_item "Admin", "#" %> 
         <% end %>
     <% end %>
     <%= menu_group :pull => :left do %>
