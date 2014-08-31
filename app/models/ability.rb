@@ -8,7 +8,7 @@ class Ability
        if user.try(:admin)
           can :manage, :all
        else
-          can :create, Entity, :user_id => user.id
+          can :create, Entity
           can :show, Entity
           can :update, Entity, :user_id => user.id
           cannot :destroy, Entity

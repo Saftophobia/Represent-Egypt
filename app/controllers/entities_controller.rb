@@ -25,15 +25,19 @@ class EntitiesController < ApplicationController
   # POST /entities
   # POST /entities.json
   def create
-    @entity = Entity.new(entity_params)
-    @entity.user_id = current_user.id
-    respond_to do |format|
-      if @entity.save
-        format.html { redirect_to @entity, notice: 'Entity was successfully created.' }
-        format.json { render :show, status: :created, location: @entity }
-      else
-        format.html { render :new }
-        format.json { render json: @entity.errors, status: :unprocessable_entity }
+    if current_user.entity
+      raise "You can't add more companies"
+    else
+      @entity = Entity.new(entity_params)
+      @entity.user_id = current_user.id
+      respond_to do |format|
+        if @entity.save
+          format.html { redirect_to @entity, notice: 'Entity was successfully created.' }
+          format.json { render :show, status: :created, location: @entity }
+        else
+          format.html { render :new }
+          format.json { render json: @entity.errors, status: :unprocessable_entity }
+        end
       end
     end
   end

@@ -39,7 +39,7 @@
         </div>
   </div>
 
-
+  <% unless current_user.entity %>
   <div class="sidebar-nav" style="position: absolute; top: 60%; left: 2%; z-index: 99; background: white; height:0%;width:20%">
         <div class="navbar navbar-default" role="navigation">
           <div class="navbar-collapse collapse sidebar-navbar-collapse">
@@ -49,7 +49,7 @@
           </div>
         </div>
   </div>
-
+  <% end %>
 
 </div>
 <script type="text/javascript">
@@ -164,9 +164,6 @@
     ]);
   handler.bounds.extendWith(markers);
   handler.fitMapToBounds();
-  
-
-
   });
   function makeinvis(){
     markers[0].serviceObject.setVisible(false);
