@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :type %><br>
-    <%= f.text_field :type %>
+    <%= f.select :type, options_for_select(["Startup", "Investor", "Accelerator", "Co-worker", "R&D Center", "Service"]), {}, {:multiple => true, :class => "multiselect", :style => "width:450px;" } %>
   </div>
   <div class="field">
     <%= f.label :lat %><br>
@@ -57,3 +57,39 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('.multiselect').multiselect({
+
+    
+    onChange: function(option, checked) {
+    // Get selected options.
+    var selectedOptions = $('.multiselect option:selected');
+     
+    if (selectedOptions.length >= 4) {
+    // Disable all other checkboxes.
+    var nonSelectedOptions = $('.multiselect option').filter(function() {
+    return !$(this).is(':selected');
+    });
+     
+    var dropdown = $('.multiselect').siblings('.multiselect-container');
+    nonSelectedOptions.each(function() {
+    var input = $('input[value="' + $(this).val() + '"]');
+    input.prop('disabled', true);
+    input.parent('li').addClass('disabled');
+    });
+    }
+    else {
+    // Enable all checkboxes.
+    var dropdown = $('.multiselect').siblings('.multiselect-container');
+    $('.multiselect option').each(function() {
+    var input = $('input[value="' + $(this).val() + '"]');
+    input.prop('disabled', false);
+    input.parent('li').addClass('disabled');
+    });
+    }
+    }
+    });
+  });
+</script>

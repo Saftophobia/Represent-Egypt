@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
+//= require bootstrap-multiselect
 //= require turbolinks
 //= require underscore
 //= require gmaps/google
