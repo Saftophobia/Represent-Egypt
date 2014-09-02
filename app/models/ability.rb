@@ -9,7 +9,11 @@ class Ability
           can :manage, :all
        else
           can :create, Entity
-          can :show, Entity
+    
+          can :show, Entity do |l|
+            l.user_id == user.id || l.admin_verification == true
+          end
+
           can :update, Entity, :user_id => user.id
           cannot :destroy, Entity
 

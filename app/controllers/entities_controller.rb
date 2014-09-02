@@ -28,8 +28,11 @@ class EntitiesController < ApplicationController
     if current_user.entity
       raise "You can't add more companies"
     else
+
       @entity = Entity.new(entity_params)
       @entity.user_id = current_user.id
+      @entity.admin_verification = false
+
       respond_to do |format|
         if @entity.save
           format.html { redirect_to @entity, notice: 'Entity was successfully created.' }
@@ -47,8 +50,10 @@ class EntitiesController < ApplicationController
   def update
     respond_to do |format|
       if @entity.update(entity_params)
+
         unless current_user.try(:admin)
           @entity.user_id = current_user.id
+          @entity.admin_verification = false
           @entity.save
         end
 
@@ -71,6 +76,7 @@ class EntitiesController < ApplicationController
     end
   end
 
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_entity
@@ -79,6 +85,10 @@ class EntitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def entity_params
-      params.require(:entity).permit(:name, :type, :lat, :lon, :description, :url, :address, :year_estab, :user_id)
+      if current_user.try(:admin)
+        params.require(:entity).permit(:name, :type, :lat, :lon, :description, :url, :address, :year_estab, :user_id, :admin_verification)
+      else
+        params.require(:entity).permit(:name, :type, :lat, :lon, :description, :url, :address, :year_estab)
+      end
     end
 end
