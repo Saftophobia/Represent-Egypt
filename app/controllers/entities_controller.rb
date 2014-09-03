@@ -15,6 +15,8 @@ class EntitiesController < ApplicationController
 
   def edit
     # Populate the selected types for amends
+    #@entity_types = ['Startup', 'Investor', 'Accelerator', 'Co-worker', 'R&D Center', 'Service']
+  
     @selected_types = Entity.find(params[:id]).type.squish.split(/ - /)
   end
 

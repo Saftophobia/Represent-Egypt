@@ -20,7 +20,6 @@
     <%= f.select :type, options_for_select(["Startup", "Investor", "Accelerator", "Co-worker", "R&D Center", "Service"], :selected => @selected_types), {}, {:multiple => true, :class => "multiselect", :style => "width:450px;" } %>
   </div>
   
-
   <div class="field">
     <%= f.label :lat %><br>
     <%= f.text_field :lat %>
