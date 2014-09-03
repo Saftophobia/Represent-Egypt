@@ -1,4 +1,5 @@
 class Entity < ActiveRecord::Base
+	#include ActiveModel::EntityTypeValidator
 	belongs_to :user
 
 	self.inheritance_column = nil
@@ -12,14 +13,7 @@ class Entity < ActiveRecord::Base
 	validates :year_estab, :presence => true
 	validates :url, :presence => true, length: { in: 6..55 }, :format => URI::regexp(%w(http https))
 	validates :user_id, :presence => true
-	validate :has_valid_type :type
-
-	def has_valid_type(type)
-		p "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW" + type.to_s
-      if ["Startup", "Investor", "Accelerator", "Co-worker", "R&D Center", "Service"].any?{ |o| :type =~ /\b#{Regexp.escape(o)}\b/ }
-      	 p "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
-        errors.add(:type, "Invalid Type")
-      end
-    end
+	validates :type, :entity_type => true
 
 end
+
