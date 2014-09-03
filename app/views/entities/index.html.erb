@@ -1,0 +1,41 @@
+<h1>Listing entities</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Lat</th>
+      <th>Lon</th>
+      <th>Description</th>
+      <th>Url</th>
+      <th>Address</th>
+      <th>Year estab</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @entities.each do |entity| %>
+      <tr>
+        <td><%= entity.name %></td>
+        <td><%= entity.type %></td>
+        <td><%= entity.lat %></td>
+        <td><%= entity.lon %></td>
+        <td><%= entity.description %></td>
+        <td><%= entity.url %></td>
+        <td><%= entity.address %></td>
+        <td><%= entity.year_estab %></td>
+        <td><%= entity.user_id %></td>
+        <td><%= link_to 'Show', entity %></td>
+        <td><%= link_to 'Edit', edit_entity_path(entity) %></td>
+        <td><%= link_to 'Destroy', entity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Entity', new_entity_path %>

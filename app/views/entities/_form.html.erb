@@ -1,0 +1,96 @@
+<%= form_for(@entity) do |f| %>
+  <% if @entity.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@entity.errors.count, "error") %> prohibited this entity from being saved:</h2>
+
+      <ul>
+      <% @entity.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :type %><br>
+    <%= f.select :type, options_for_select(["Startup", "Investor", "Accelerator", "Co-worker", "R&D Center", "Service"], :selected => @selected_types), {}, {:multiple => true, :class => "multiselect", :style => "width:450px;" } %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :lat %><br>
+    <%= f.text_field :lat %>
+  </div>
+  <div class="field">
+    <%= f.label :lon %><br>
+    <%= f.text_field :lon %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :url %><br>
+    <%= f.text_field :url %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br>
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <%= f.label :year_estab %><br>
+    <%= f.text_field :year_estab %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.text_field :user_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :admin_verification %><br>
+    <%= f.text_field :admin_verification %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('.multiselect').multiselect({
+
+    
+    onChange: function(option, checked) {
+    // Get selected options.
+    var selectedOptions = $('.multiselect option:selected');
+     
+    if (selectedOptions.length >= 3) {
+    // Disable all other checkboxes.
+    var nonSelectedOptions = $('.multiselect option').filter(function() {
+    return !$(this).is(':selected');
+    });
+     
+    var dropdown = $('.multiselect').siblings('.multiselect-container');
+    nonSelectedOptions.each(function() {
+    var input = $('input[value="' + $(this).val() + '"]');
+    input.prop('disabled', true);
+    input.parent('li').addClass('disabled');
+    });
+    }
+    else {
+    // Enable all checkboxes.
+    var dropdown = $('.multiselect').siblings('.multiselect-container');
+    $('.multiselect option').each(function() {
+    var input = $('input[value="' + $(this).val() + '"]');
+    input.prop('disabled', false);
+    input.parent('li').addClass('disabled');
+    });
+    }
+    }
+    });
+  });
+</script>
