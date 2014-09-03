@@ -2,28 +2,22 @@ class EntitiesController < ApplicationController
   before_action :set_entity, only: [:show, :edit, :update, :destroy]
   load_and_authorize_resource except: [:create]
 
-  # GET /entities
-  # GET /entities.json
   def index
     @entities = Entity.all
   end
 
-  # GET /entities/1
-  # GET /entities/1.json
   def show
   end
 
-  # GET /entities/new
   def new
     @entity = Entity.new
   end
 
-  # GET /entities/1/edit
   def edit
+    # Populate the selected types for amends
+    @selected_types = Entity.find(params[:id]).type.squish.split(/ - /)
   end
 
-  # POST /entities
-  # POST /entities.json
   def create
     if current_user.entity
       raise "You can't add more companies"
@@ -45,10 +39,9 @@ class EntitiesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /entities/1
-  # PATCH/PUT /entities/1.json
   def update
     respond_to do |format|
+
       if @entity.update(entity_params)
           p "********************************************** "+@entity.type.to_s
         unless current_user.try(:admin)
@@ -66,8 +59,6 @@ class EntitiesController < ApplicationController
     end
   end
 
-  # DELETE /entities/1
-  # DELETE /entities/1.json
   def destroy
     @entity.destroy
     respond_to do |format|

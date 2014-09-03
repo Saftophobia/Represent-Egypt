@@ -17,8 +17,10 @@
   </div>
   <div class="field">
     <%= f.label :type %><br>
-    <%= f.select :type, options_for_select(["Startup", "Investor", "Accelerator", "Co-worker", "R&D Center", "Service"]), {}, {:multiple => true, :class => "multiselect", :style => "width:450px;" } %>
+    <%= f.select :type, options_for_select(["Startup", "Investor", "Accelerator", "Co-worker", "R&D Center", "Service"], :selected => @selected_types), {}, {:multiple => true, :class => "multiselect", :style => "width:450px;" } %>
   </div>
+  
+
   <div class="field">
     <%= f.label :lat %><br>
     <%= f.text_field :lat %>
@@ -67,7 +69,7 @@
     // Get selected options.
     var selectedOptions = $('.multiselect option:selected');
      
-    if (selectedOptions.length >= 4) {
+    if (selectedOptions.length >= 3) {
     // Disable all other checkboxes.
     var nonSelectedOptions = $('.multiselect option').filter(function() {
     return !$(this).is(':selected');
