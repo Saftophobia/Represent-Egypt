@@ -3,8 +3,8 @@ class CreateEntities < ActiveRecord::Migration
     create_table :entities do |t|
       t.string :name
       t.string :type
-      t.decimal :lat
-      t.decimal :lon
+      t.decimal :lat, :precision => 15, :scale => 10
+      t.decimal :lon, :precision => 15, :scale => 10
       t.text :description
       t.string :url
       t.string :address

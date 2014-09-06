@@ -16,13 +16,13 @@ ActiveRecord::Schema.define(version: 20140831124340) do
   create_table "entities", force: true do |t|
     t.string   "name"
     t.string   "type"
-    t.decimal  "lat",                precision: 10, scale: 0
-    t.decimal  "lon",                precision: 10, scale: 0
+    t.decimal  "lat",                precision: 15, scale: 10
+    t.decimal  "lon",                precision: 15, scale: 10
     t.text     "description"
     t.string   "url"
     t.string   "address"
     t.integer  "year_estab"
-    t.boolean  "admin_verification",                          default: false
+    t.boolean  "admin_verification",                           default: false
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
