@@ -9,10 +9,17 @@ class PagesController < ApplicationController
     @rdcenters = Entity.where(['type LIKE ?', '%center%']).where(:admin_verification => true).all
     @services = Entity.where('type LIKE ?', '%services%').where(:admin_verification => true).all
     
+
+              
+              
+
 		@startups_hash = Gmaps4rails.build_markers(@startups) do |entity, marker|
   			marker.lat entity.lat
   			marker.lng entity.lon
-  			marker.infowindow "<b> hello! <b> "
+  			marker.infowindow "<div style='font-weight: bold;max-width: 350px;'> <a href='/entities/#{entity.id}'>#{entity.name}</a></div> 
+            <div style='font-size: 9pt;color: #999;'><a href='#{entity.url}'>#{entity.url}</a></div>
+            <div style='max-width: 300px;color: #555;font-size: 9pt;margin-top: 10px;'>#{entity.description}</div>"
+
   			marker.picture ({
             :url => "assets/icons/startup.png", 
             :width => 31, 
@@ -24,7 +31,10 @@ class PagesController < ApplicationController
     @investors_hash = Gmaps4rails.build_markers(@investors) do |entity, marker|
         marker.lat entity.lat
         marker.lng entity.lon
-        marker.infowindow "<b> hello! <b> "
+        marker.infowindow "<div style='font-weight: bold;max-width: 350px;'> <a href='/entities/#{entity.id}'>#{entity.name}</a></div> 
+            <div style='font-size: 9pt;color: #999;'><a href='#{entity.url}'>#{entity.url}</a></div>
+            <div style='max-width: 300px;color: #555;font-size: 9pt;margin-top: 10px;'>#{entity.description}</div>"
+
         marker.picture ({
             :url => "assets/icons/investor.png", 
             :width => 31, 
@@ -36,7 +46,10 @@ class PagesController < ApplicationController
     @accelerators_hash = Gmaps4rails.build_markers(@accelerators) do |entity, marker|
         marker.lat entity.lat
         marker.lng entity.lon
-        marker.infowindow "<b> hello! <b> "
+        marker.infowindow "<div style='font-weight: bold;max-width: 350px;'> <a href='/entities/#{entity.id}'>#{entity.name}</a></div> 
+            <div style='font-size: 9pt;color: #999;'><a href='#{entity.url}'>#{entity.url}</a></div>
+            <div style='max-width: 300px;color: #555;font-size: 9pt;margin-top: 10px;'>#{entity.description}</div>"
+
         marker.picture ({
             :url => "assets/icons/accelerator.png", 
             :width => 31, 
@@ -48,7 +61,10 @@ class PagesController < ApplicationController
     @coworking_hash = Gmaps4rails.build_markers(@coworking) do |entity, marker|
         marker.lat entity.lat
         marker.lng entity.lon
-        marker.infowindow "<b> hello! <b> "
+        marker.infowindow "<div style='font-weight: bold;max-width: 350px;'> <a href='/entities/#{entity.id}'>#{entity.name}</a></div> 
+            <div style='font-size: 9pt;color: #999;'><a href='#{entity.url}'>#{entity.url}</a></div>
+            <div style='max-width: 300px;color: #555;font-size: 9pt;margin-top: 10px;'>#{entity.description}</div>"
+
         marker.picture ({
             :url => "assets/icons/coworking.png", 
             :width => 31, 
@@ -60,7 +76,10 @@ class PagesController < ApplicationController
     @rdcenters_hash = Gmaps4rails.build_markers(@rdcenters) do |entity, marker|
         marker.lat entity.lat
         marker.lng entity.lon
-        marker.infowindow "<b> hello! <b> "
+        marker.infowindow "<div style='font-weight: bold;max-width: 350px;'> <a href='/entities/#{entity.id}'>#{entity.name}</a></div> 
+            <div style='font-size: 9pt;color: #999;'><a href='#{entity.url}'>#{entity.url}</a></div>
+            <div style='max-width: 300px;color: #555;font-size: 9pt;margin-top: 10px;'>#{entity.description}</div>"
+
         marker.picture ({
             :url => "assets/icons/incubator.png", 
             :width => 31, 
@@ -72,7 +91,10 @@ class PagesController < ApplicationController
     @services_hash = Gmaps4rails.build_markers(@services) do |entity, marker|
         marker.lat entity.lat
         marker.lng entity.lon
-        marker.infowindow "<b> hello! <b> "
+        marker.infowindow "<div style='font-weight: bold;max-width: 350px;'> <a href='/entities/#{entity.id}'>#{entity.name}</a></div> 
+            <div style='font-size: 9pt;color: #999;'><a href='#{entity.url}'>#{entity.url}</a></div>
+            <div style='max-width: 300px;color: #555;font-size: 9pt;margin-top: 10px;'>#{entity.description}</div>"
+
         marker.picture ({
             :url => "assets/icons/service.png", 
             :width => 31, 
