@@ -7,7 +7,7 @@ class PagesController < ApplicationController
     @accelerators = Entity.where('type LIKE ?', '%Accelerator%').where(:admin_verification => true).all
     @coworking = Entity.where('type LIKE ?', '%work%').where(:admin_verification => true).all
     @rdcenters = Entity.where(['type LIKE ?', '%Center%']).where(:admin_verification => true).all
-    @services = Entity.where('type LIKE ?', '%Services%').where(:admin_verification => true).all
+    @services = Entity.where('type LIKE ?', '%Service%').where(:admin_verification => true).all
     
 
               
