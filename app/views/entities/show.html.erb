@@ -1,14 +1,40 @@
+<div style="margin-top:4%">
+  <div class="row-fluid">
+    <div class="col-md-1 col-md-offset-0" style="color:white" >
+    </div>
+    <div class="col-md-10 col-md-offset-0">
+    
+      <div style="color:grey;  border: 1px #e4e4e4 solid;  padding: 30px; padding-top: 20px; border-radius: 4px; box-shadow: 0 0 6px #ccc; background-color: #fff;">
+
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @entity.name %>
-</p>
+<h1 style="display: inline-block"><%= @entity.name %></h1> - since  <%= @entity.year_estab %>
 
 <p>
-  <strong>Type:</strong>
-  <%= @entity.type %>
+  <%= @entity.description %>
 </p>
+
+
+<% if @entity.type.include? 'Startup'%>
+<%= image_tag "icons/startup.png", :title => "Startup"%>
+<% end %>
+<% if @entity.type.include? 'Investor'%>
+<%= image_tag "icons/investor.png", :title => "Investor"%>
+<% end %>
+<% if @entity.type.include? 'Accelerator'%>
+<%= image_tag "icons/accelerator.png", :title => "Accelerator"%>
+<% end %>
+<% if @entity.type.include? 'Service'%>
+<%= image_tag "icons/service.png", :title => "Service"%>
+<% end %>
+<% if @entity.type.include? 'work'%>
+<%= image_tag "icons/coworking.png", :title => "Co-worker"%>
+<% end %>
+<% if @entity.type.include? 'Center'%>
+<%= image_tag "icons/incubator.png", :title => "R&D Center"%>
+<% end %>
+
 
 <p>
   <strong>Lat:</strong>
@@ -20,14 +46,11 @@
   <%= @entity.lon %>
 </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @entity.description %>
-</p>
+
 
 <p>
   <strong>Url:</strong>
-  <%= @entity.url %>
+  <%= link_to @entity.url, @entity.url %>
 </p>
 
 <p>
@@ -35,10 +58,7 @@
   <%= @entity.address %>
 </p>
 
-<p>
-  <strong>Year estab:</strong>
-  <%= @entity.year_estab %>
-</p>
+
 
 <p>
   <% if current_user.try(:admin)%>
@@ -47,25 +67,25 @@
   <% end %>
 </p>
 
+<% if @entity.user.id == current_user.id %>
 <p>
   <strong>Verified:</strong>
   <%= @entity.admin_verification %>
 </p>
+<% end %>
+
+<% if @entity.user.id == current_user.id || current_user.admin %>
+<%= link_to 'Edit', edit_entity_path(@entity) , target: "_self" %> |
+<% end %>
+<%= link_to 'Back', authenticated_root_path, target: "_self"%>
 
 
-
-<%= link_to 'Edit', edit_entity_path(@entity) %> |
-<%= link_to 'Back', entities_path %>
-
- <% unless current_user.entity.admin_verification %>
-  <p>
-  NOT YET VERIFIED
-  </p>
-
- <% end %>
-
-
-
+</div>
+</div>
+<div class="col-md-1 col-md-offset-0" style="color:white" >
+  </div>
+</div>
+</div>
 
 
 

@@ -80,3 +80,4 @@ gem 'bootstrap-multiselect-rails'
 
 gem 'gmaps4rails'
 
+gem 'bootstrap_form'

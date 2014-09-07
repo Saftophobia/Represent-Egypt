@@ -21,38 +21,25 @@
 		<div class="col-md-3 col-md-offset-0">
 			<div style="color:grey; margin-top:30px;  border: 1px #e4e4e4 solid;  padding: 20px; border-radius: 4px; box-shadow: 0 0 6px #ccc; background-color: #fff;">
 
-				<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+				<%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 				  <div>
-				  <%= f.email_field :email, :type => "email", :class => "form-control", :placeholder => "Email address" , autofocus: true %></div>
-				  </br>
-
-
-
-
-				 
-
+				  <%= f.email_field :email, hide_label: true, :type => "email", :class => "form-control", :placeholder => "Email address" , autofocus: true %></div>
+				  
 				  <div>
-				    <%= f.password_field :password, :type => "password", :class => "form-control", :placeholder => "Password" , autocomplete: "off" %>
+				    <%= f.password_field :password, hide_label: true, :type => "password", :class => "form-control", :placeholder => "Password" , autocomplete: "off" %>
 				  </div>
-				   	
-				  </br>
 
 				  
 				  <div><%= f.submit "Sign in", :class => "btn btn-small btn-primary btn-block", :type => "submit" %></div>
 
-
-
-				  
 				  <% if devise_mapping.rememberable? -%>
-				    <%= f.check_box :remember_me %> <%= f.label :remember_me , {:style=>'font-weight: normal;'}%> 
+				    <%= f.check_box :remember_me, label: "Remember me", inline: true %> 
 				  <% end -%>
 				  <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-				  <%= link_to "Forgot password?", new_password_path(resource_name), {:style=>'color:grey ;float:right; margin-top: 1.1%'} %>
-				  
-				<% end -%>
 
-
+				  <%= link_to "Forgot password?", new_password_path(resource_name), {:style=>'color:grey ;float:right;'} %>
 				  
+					<% end -%>
 
 
 				<% end %>
