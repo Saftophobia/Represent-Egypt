@@ -2,12 +2,12 @@ class PagesController < ApplicationController
 	before_action :authenticate_user!
 
 	def home
-		@startups = Entity.where('type LIKE ?', '%startup%').where(:admin_verification => true).all
-    @investors = Entity.where('type LIKE ?', '%investor%').where(:admin_verification => true).all
+		@startups = Entity.where('type LIKE ?', '%Startup%').where(:admin_verification => true).all
+    @investors = Entity.where('type LIKE ?', '%Investor%').where(:admin_verification => true).all
     @accelerators = Entity.where('type LIKE ?', '%Accelerator%').where(:admin_verification => true).all
     @coworking = Entity.where('type LIKE ?', '%work%').where(:admin_verification => true).all
-    @rdcenters = Entity.where(['type LIKE ?', '%center%']).where(:admin_verification => true).all
-    @services = Entity.where('type LIKE ?', '%services%').where(:admin_verification => true).all
+    @rdcenters = Entity.where(['type LIKE ?', '%Center%']).where(:admin_verification => true).all
+    @services = Entity.where('type LIKE ?', '%Services%').where(:admin_verification => true).all
     
 
               

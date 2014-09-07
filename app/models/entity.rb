@@ -14,6 +14,7 @@ class Entity < ActiveRecord::Base
 	validates :lat, :presence => true,:numericality => {:greater_than_or_equal_to => 22, :less_than_or_equal_to => 32} 
 	validates :lon, :presence => true, :numericality => {:greater_than_or_equal_to => 25, :less_than_or_equal_to => 35}
 	validates :address, :presence => true , length: { in: 10..80 }
+	validates :description, :presence => true , length: { in: 10..400 }
 	validates :year_estab, :presence => true
 	validates :url, :presence => true, length: { in: 6..55 }, :format => URI::regexp(%w(http https))
 	validates :user_id, :presence => true
@@ -23,7 +24,7 @@ class Entity < ActiveRecord::Base
   		inclusion: { in: 1900..Date.today.year },
   		format: { 
     		with: /(19|20)\d{2}/i, 
-    		message: "should be a four-digit year"
+    		message: "should fall between 1900 ~ current year"
   	}
 end
 
