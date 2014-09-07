@@ -16,7 +16,9 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.select :type, options_for_select(["Startup", "Investor", "Accelerator", "Co-worker", "R&D Center", "Service"], :selected => @selected_types), {}, {:multiple => true, :class => "multiselect", :style => "width:450px;" } %>
+    <%= #f.select :type, options_for_select(["Startup", "Investor", "Accelerator", "Co-worker", "R&D Center", "Service"], :selected => @selected_types), {}, {:multiple => true, :class => "multiselect", :style => "width:450px;" }
+    f.text_field :type 
+     %>
   </div>
   
   <div class="field">
