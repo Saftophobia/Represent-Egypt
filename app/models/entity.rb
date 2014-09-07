@@ -13,7 +13,7 @@ class Entity < ActiveRecord::Base
 	validates :year_estab, :presence => true
 	validates :url, :presence => true, length: { in: 6..55 }, :format => URI::regexp(%w(http https))
 	validates :user_id, :presence => true
-	validates :type, :entity_type => true
+	validates :type, :presence => true #:entity_type => true
 	validates :year_estab, 
   		presence: true,
   		inclusion: { in: 1900..Date.today.year },
