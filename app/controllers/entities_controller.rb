@@ -79,7 +79,7 @@ class EntitiesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def entity_params
       if current_user.try(:admin)
-        params.require(:entity).permit(:name, {:type => []}, :lat, :lon, :description, :url, :address, :year_estab, :user_id, :admin_verification)
+        params.require(:entity).permit(:name, :type, :lat, :lon, :description, :url, :address, :year_estab, :user_id, :admin_verification)
       else
         params.require(:entity).permit(:name, {:type => []}, :lat, :lon, :description, :url, :address, :year_estab)
       end
