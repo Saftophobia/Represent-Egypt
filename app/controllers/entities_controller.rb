@@ -16,8 +16,7 @@ class EntitiesController < ApplicationController
   def edit
     # Populate the selected types for amends
     #@entity_types = ['Startup', 'Investor', 'Accelerator', 'Co-worker', 'R&D Center', 'Service']
-  
-    @selected_types = Entity.find(params[:id]).type.squish.split(/ - /)
+    @selected_types = Entity.find(params[:id]).type.squish.gsub('"', '').gsub(']', '').gsub('[', '').split(/, /)   
   end
 
   def create
@@ -29,7 +28,6 @@ class EntitiesController < ApplicationController
       @entity.user_id = current_user.id
       @entity.admin_verification = false
       
-      p "******************************************************************"  + @entity.type.to_s
       respond_to do |format|
         if @entity.save
           format.html { redirect_to @entity, notice: 'Entity was successfully created.' }
