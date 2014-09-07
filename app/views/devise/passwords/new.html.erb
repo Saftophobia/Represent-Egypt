@@ -1,12 +1,25 @@
+<div style="margin-top:9%">
+	<div class="row-fluid">
+		<div class="col-md-3 col-md-offset-0" style="color:white" >
+		</div>
+		<div class="col-md-6 col-md-offset-0">
+		
+			<div style="color:grey;  border: 1px #e4e4e4 solid;  padding: 20px; padding-top: 0px; padding-bottom: 50px; border-radius: 4px; box-shadow: 0 0 6px #ccc; background-color: #fff;">
+
 <h2>Forgot your password?</h2>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
+<%= bootstrap_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  
+  <div><%= f.email_field :email, autofocus: true %></div>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div>
-
-  <div><%= f.submit "Send me reset password instructions" %></div>
+  <div><%= f.submit "Send me reset password instructions", class: "pull-right btn btn-small btn-sign-up" %></div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+</div>
+<div class="col-md-3 col-md-offset-0" style="color:white" >
+		</div>
+</div>
+</div>
+</div>
+
+

@@ -42,6 +42,7 @@ GEM
       sass (~> 3.2)
     bootstrap-will_paginate (0.0.9)
       will_paginate
+    bootstrap_form (2.1.1)
     builder (3.2.2)
     cancan (1.6.10)
     capybara (2.4.1)
@@ -227,6 +228,7 @@ DEPENDENCIES
   bootstrap-multiselect-rails
   bootstrap-sass (= 2.3.2.0)
   bootstrap-will_paginate (= 0.0.9)
+  bootstrap_form
   cancan
   capybara
   coffee-rails (~> 4.0.0)

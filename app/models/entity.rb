@@ -14,6 +14,12 @@ class Entity < ActiveRecord::Base
 	validates :url, :presence => true, length: { in: 6..55 }, :format => URI::regexp(%w(http https))
 	validates :user_id, :presence => true
 	validates :type, :entity_type => true
-
+	validates :year_estab, 
+  		presence: true,
+  		inclusion: { in: 1900..Date.today.year },
+  		format: { 
+    		with: /(19|20)\d{2}/i, 
+    		message: "should be a four-digit year"
+  	}
 end
 

@@ -12,12 +12,13 @@
         	<% end %>
         <% end %>
         <% if current_user.try(:admin)%>
-            <%= menu_item "Admin", "#" %> 
+            <%= #menu_item "Admin", "#" 
+            %> 
         <% end %>
     <% end %>
     <%= menu_group :pull => :left do %>
         <% if user_signed_in? %>
-        	<%= menu_item "Home", authenticated_root_path %>
+        	<%= menu_item "Home", authenticated_root_path, target: "_self" %>
         <% end %>
     <% end %>
     

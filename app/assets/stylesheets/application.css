@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  *= require bootstrap-multiselect
+ *= require rails_bootstrap_forms
  */
   /*body {
 
@@ -30,7 +31,7 @@
 
       
     body {
-    background: url('tahrir.jpg') no-repeat center center fixed; 
+    background: url('khan.jpg') no-repeat center center fixed; 
   	-webkit-background-size: cover;
   	-moz-background-size: cover;
   	-o-background-size: cover;
