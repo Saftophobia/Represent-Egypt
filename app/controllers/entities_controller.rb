@@ -29,6 +29,7 @@ class EntitiesController < ApplicationController
       @entity.user_id = current_user.id
       @entity.admin_verification = false
       
+      p "******************************************************************"  + @entity.type.to_s
       respond_to do |format|
         if @entity.save
           format.html { redirect_to @entity, notice: 'Entity was successfully created.' }
@@ -79,7 +80,7 @@ class EntitiesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def entity_params
       if current_user.try(:admin)
-        params.require(:entity).permit(:name, :type, :lat, :lon, :description, :url, :address, :year_estab, :user_id, :admin_verification)
+        params.require(:entity).permit(:name, {:type => []}, :lat, :lon, :description, :url, :address, :year_estab, :user_id, :admin_verification)
       else
         params.require(:entity).permit(:name, {:type => []}, :lat, :lon, :description, :url, :address, :year_estab)
       end

@@ -4,6 +4,10 @@ class Entity < ActiveRecord::Base
 
 	self.inheritance_column = nil
 
+	before_save(:on => :create) do
+		self.type = self.type.to_s
+	end
+
 	validates :name, :presence => true, length: { in: 3..20 }
 	#validates :type, :presence => true, :if => '["Startup", "Investor", "Accelerator", "Co-worker", "R&D Center", "Service"].any?{ |o| :afreet =~ /\b#{Regexp.escape(o)}\b/ }'
 	#validates_inclusion_of :type, :in => ["Startup"], :allow_nil => false
